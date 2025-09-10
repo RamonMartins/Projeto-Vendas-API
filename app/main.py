@@ -17,6 +17,11 @@ def get_db():
     finally:
         db.close()
 
+# Endpoint Inicial
+@app.get("/")
+def home():
+    return "Bem vindo ao Projeto Vendas API"
+
 # Endpoint para Criar Produto
 @app.post("/produtos/", response_model=schemas.ProdutoResponse)
 def criar_produto(produto: schemas.ProdutoCreate, db: Session = Depends(get_db)):
